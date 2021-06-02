@@ -1,0 +1,32 @@
+.login-dark {
+    height: 1000px;
+    background: #475d62 url(../../assets/images/sunset_grounds_ss_18.jpg);
+    background-size: cover;
+}
+.login-dark .login-form {
+    max-width: 360px;
+    width: 90%;
+    background-color: #1e2833;
+    padding: 40px;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.4);
+}
+
+.login-form h2 {
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 40px;
+}
+  
+.login-dark form .btn-primary {
+    background: #214a80;
+    border-radius: 2px;
+    padding: 8px;
+    margin-top: 24px;
+  }
+  

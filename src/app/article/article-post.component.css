@@ -1,0 +1,22 @@
+.section {
+    column-count: 3;
+}
+.article-post {
+    margin: 50px;
+}
+.article-item {
+    margin-bottom: 30px;
+}
+@media screen and (max-width: 600px) {
+    h1 {
+        text-align: center;
+    }
+}
+
+h1 {
+    transition: 0.4s;
+}
+h1:hover {
+    background-color: black;
+    color: white;
+}

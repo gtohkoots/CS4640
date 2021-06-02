@@ -1,0 +1,41 @@
+<pm-header></pm-header>
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+          <div class='col-md-1'>Filter by:</div>
+          <div class='col-md-4'>
+            <input type='text' [(ngModel)]='filterInput'/>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-6'>
+            <h4>Filtered by: {{filterInput}}</h4>
+          </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Category</th>
+                    <th>Keyword</th>
+                    <th>PublishDate</th>
+                    <th>Available</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let article of filteredArray'>
+                <td>{{article.name}}</td>
+                <td>{{article.category}}</td>
+                <td>{{article.keyword}}</td>
+                <td>{{article.date}}</td>
+                <td>{{article.available}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
