@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
         })();
         if (result) {
             this.socialAuthService.signOut();
-            this.router.navigate(['/']);
+            this.router.navigate(['']);
         }
         else {
             alert("logout canceled");

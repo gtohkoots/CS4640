@@ -1,10 +1,10 @@
 <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-    <div class="container"><a class="nav-color navbar-brand" href="#">{{username}}</a><button data-bs-toggle="collapse" data-bs-target="#navcol-1" class="navbar-toggler"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <div class="container"><a class="nav-color navbar-brand" routerLink="/article">{{username}}</a><button data-bs-toggle="collapse" data-bs-target="#navcol-1" class="navbar-toggler"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-color nav-link">First Item</a></li>
-                <li class="nav-item"><a class="nav-color nav-link">Second Item</a></li>
-                <li class="nav-item"><a class="nav-color nav-link">Third Item</a></li>
+                <li class="nav-item"><a class="nav-color nav-link" routerLink="/article">Article List</a></li>
+                <li class="nav-item"><a class="nav-color nav-link" routerLink="/article/post">Post Article</a></li>
+                <li class="nav-item"><a class="nav-color nav-link" routerLink="/">Third Item</a></li>
                 <li class="nav-item" (click) = "logOut()"><a class="nav-color nav-link">Log out</a></li>
             </ul>
         </div>

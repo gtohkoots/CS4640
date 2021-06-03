@@ -1,11 +1,10 @@
-
 <body style="margin: 50px">
         <h1 (mouseover)="changeExpress()">Write an Article</h1>
         <div class="col-sm-8 well">
-            <form name = "writeForm" #signupForm="ngForm" accept-charset="UTF-8"style="text-align: center" (ngSubmit)="validateForm(signupForm)">
+            <form name = "writeForm" [formGroup]="articleForm" accept-charset="UTF-8"style="text-align: center" (ngSubmit)="validateForm()">
                 <div class="dropdown col-sm-4 article-item">
                     <label>Category</label>
-                    <select class="form-select" aria-label="Default select example" id="categories" name="category" (change)="categoryUpdate()" ngModel>
+                    <select class="form-select" aria-label="Default select example" id="categories" formControlName="cid" (change)="categoryUpdate()">
                         <option value="Category">Category</option>
                         <option value=1 style="font-weight: bold">Sports</option>
                         <option value=2 style="font-weight: bold">Politics</option>
@@ -15,15 +14,15 @@
                 </div>
                 <div class="row article-item">
                     <div class="form-group blue-border-focus">
-                        <input type="title" name="title" class="form-control" id="Title" placeholder="Title" maxlength="100" ngModel>
+                        <input type="title" formControlName="title" class="form-control" id="Title" placeholder="Title" maxlength="100">
                     </div>
                 </div>
                 <div class="form-group blue-border-focus article-item">
-                    <input type="Keywords" name="keyword" class="form-control" id="Keywords" placeholder="Keywords" maxlength="100" ngModel>
+                    <input type="Keywords" formControlName="keyword" class="form-control" id="Keywords" placeholder="Keywords" maxlength="100">
                 </div>
                 <div>
-                    <textarea class="form-control blue-border-focus" id="text" name="text" 
-                    placeholder="Write" rows="20" (keyup)="onEnterKey()" ngModel></textarea>
+                    <textarea class="form-control blue-border-focus" id="text" formControlName="text" 
+                    placeholder="Write" rows="20" (keyup)="onEnterKey()"></textarea>
                     <span id="wordCount">0</span> Characters
                     <br>
                     <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>

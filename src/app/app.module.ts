@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,11 +30,6 @@ import { PostArticleComponent } from './article/article-post.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'article', component: ArticleListComponent},
-      { path: '', component: LoginComponent},
-      { path: 'article/post', component: PostArticleComponent}
-    ])
   ],
   providers: [
     {

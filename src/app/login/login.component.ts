@@ -33,8 +33,12 @@ export class LoginComponent implements OnInit {
       if (this.isLoggedin) {
         this.router.navigate(['/article']);
         this.http.post('http://localhost/cs4640/user.php', { name: this.socialUser.name, email: this.socialUser.email }).subscribe(data => {
-          console.log('done');
-        })
+          console.log("user checked success");
+        },
+          error => {
+            console.log(error);
+          }
+        )
       }
     });
   }
