@@ -1,0 +1,15 @@
+<div class="category-wrapper container">
+    <header class="text-center text-black" style="margin-bottom: 30px;">
+        <h1 class="display-4">Category Table</h1>
+    </header>
+    <div class="card-group">
+        <div class="card" *ngFor="let item of categories; index as i;">
+            <div class="card-body">
+                <h4 class="card-title">{{item.name}}</h4>
+                <p class="card-text">{{item.description}}</p>
+                <button type="button" class="btn btn-outline-primary" (click)="handleEdit(item.id,item.description)">Edit</button>
+                <button type="button" class="btn btn-outline-danger" (click)="handleDelete(item.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

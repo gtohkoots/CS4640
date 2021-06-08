@@ -1,0 +1,17 @@
+.category-wrapper {
+    padding-top: 30px!important;
+    padding-bottom: 30px!important;
+}
+.card-group {
+    justify-content: space-between;
+}
+.card {
+    padding: 10px;
+    margin: 5px;
+    flex: 1 0 0%;
+    min-width: 420px;
+    max-width: 420px;
+}
+.card-body button {
+    margin-right: 10px;
+}

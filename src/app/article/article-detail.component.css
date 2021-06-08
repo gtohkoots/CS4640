@@ -1,0 +1,13 @@
+.article-detail {
+    color: #56585b;
+    background-color: #fff;
+    font-family: 'Roboto';
+    font-size: 14px;
+    margin-top: 45px;
+}
+.date {
+    text-transform: uppercase;
+    padding: 4px 0 4px 10px;
+    margin-left: 10px;
+    border-left: 1px solid #ddd;
+}

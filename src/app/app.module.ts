@@ -13,6 +13,11 @@ import { ArticleListComponent } from './article/article-list.component';
 import { HeaderComponent } from './shared/header.component';
 import { LoginComponent } from './login/login.component';
 import { PostArticleComponent } from './article/article-post.component';
+import { CategoryComponent } from './category/category.component';
+import { SubscribeComponent } from './subscription/subscription.component';
+import { ArticleDetailComponent } from './article/article-detail.component';
+import { CookieService } from 'ngx-cookie-service';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 
 @NgModule({
@@ -21,7 +26,10 @@ import { PostArticleComponent } from './article/article-post.component';
     ArticleListComponent,
     HeaderComponent,
     LoginComponent,
-    PostArticleComponent
+    PostArticleComponent,
+    CategoryComponent,
+    SubscribeComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +38,7 @@ import { PostArticleComponent } from './article/article-post.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgxWebstorageModule.forRoot()
   ],
   providers: [
     {
@@ -45,7 +54,8 @@ import { PostArticleComponent } from './article/article-post.component';
           }
         ]
       } as SocialAuthServiceConfig,
-    } 
+    },
+    CookieService 
   ],
   bootstrap: [AppComponent]
 })

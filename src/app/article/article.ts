@@ -1,8 +1,9 @@
 export interface Article {
-    "articleId": number,
-    "name": string,
-    "category": string,
+    "id": number,
+    "title": string,
     "keyword": string,
-    "date": Date,
-    "available": string
+    "text": string,
+    "cid": number,
+    "uid": number,
+    "Date": Date
 }

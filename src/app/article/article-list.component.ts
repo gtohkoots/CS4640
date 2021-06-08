@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from './article';
+import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { HttpParams, HttpClient } from "@angular/common/http";
+import { CookieService } from 'ngx-cookie-service';
+import { SessionStorageService } from 'ngx-webstorage';
 
 @Component({
     selector:'pm-article',
@@ -8,9 +12,19 @@ import { Article } from './article';
 })
 
 export class ArticleListComponent implements OnInit {
+    socialUser: SocialUser;
     pageTitle: string = "Article List";
     private _filterInput: string = '';
     filteredArray: Article[];
+    id: number;
+    articles: any;
+
+    constructor(
+        private socialAuthService: SocialAuthService,
+        private http: HttpClient,
+        private cookieService: CookieService,
+        private sessionStore: SessionStorageService
+    ){}
 
     get filterInput(): string {
         return this._filterInput;
@@ -26,39 +40,35 @@ export class ArticleListComponent implements OnInit {
     filting(val: string) {
         val = val.toLowerCase();
         return this.articles.filter((article: Article) => 
-            (article.keyword.toLowerCase().includes(val) || article.name.toLowerCase().includes(val))
+            (article.keyword.toLowerCase().includes(val) || article.title.toLowerCase().includes(val))
         );
     }
 
     // Mock Data
-    articles: Article[] = [
-        {
-            "articleId": 1,
-            "name":"test1",
-            "category":"UVA",
-            "keyword":"Go Hoos",
-            "date": new Date(),
-            "available":"Yes"
-        },
-        {
-            "articleId": 2,
-            "name":"test2",
-            "category":"VT",
-            "keyword":"Go Hokies",
-            "date": new Date(),
-            "available":"No"
-        },
-        {
-            "articleId": 3,
-            "name":"test3",
-            "category":"Michigan",
-            "keyword":"Go Blue",
-            "date": new Date(),
-            "available":"No"
-        },
-    ]
 
     ngOnInit() {
-        this.filteredArray = this.articles;
+        this.socialAuthService.authState.subscribe((user) => {
+            this.socialUser = user;
+        });
+        let params = new HttpParams().append("email",this.cookieService.get('email'));
+        this.http.get('http://localhost/cs4640/get_user_id.php', {params: params}).subscribe( (response) => {
+            this.id = Number(response);
+            console.log(this.id + " 4640");
+            this.sessionStore.store('userid',this.id);
+            let article_param = new HttpParams().append("uid",this.id);
+            this.http.get('http://localhost/cs4640/get_article.php', {params: article_param}).subscribe( (response) => {
+                if (response['message'] == "Success") {
+                    this.articles = JSON.stringify(response['data']);
+                    this.filteredArray = JSON.parse(this.articles);
+                    this.articles = this.filteredArray;
+                }
+            }, 
+            error => {
+                console.log(error);
+            }); 
+        }, 
+        error => {
+            console.log(error);
+        }); 
     }
 }

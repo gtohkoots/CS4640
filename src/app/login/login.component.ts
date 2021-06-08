@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'pm-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private socialAuthService: SocialAuthService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private cookieService: CookieService
   ) { this.isLoggedin = false;}
 
   ngOnInit() {
@@ -31,9 +33,11 @@ export class LoginComponent implements OnInit {
       this.socialUser = user;
       this.isLoggedin = (user != null);
       if (this.isLoggedin) {
+        this.cookieService.set('username',this.socialUser.name,1);
+        this.cookieService.set('email',this.socialUser.email,1);
         this.router.navigate(['/article']);
         this.http.post('http://localhost/cs4640/user.php', { name: this.socialUser.name, email: this.socialUser.email }).subscribe(data => {
-          console.log("user checked success");
+          console.log("user checked");
         },
           error => {
             console.log(error);

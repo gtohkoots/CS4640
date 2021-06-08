@@ -1,6 +1,6 @@
-<div class='card'>
+<div class='card container'>
     <div class='card-header'>
-      {{pageTitle}}
+      <h1>{{pageTitle}}</h1>
     </div>
     <div class='card-body'>
         <div class='row'>
@@ -20,19 +20,15 @@
             <thead>
                 <tr>
                     <th>Article Name</th>
-                    <th>Category</th>
                     <th>Keyword</th>
                     <th>PublishDate</th>
-                    <th>Available</th>
                 </tr>
             </thead>
             <tbody>
-              <tr *ngFor='let article of filteredArray'>
-                <td>{{article.name}}</td>
-                <td>{{article.category}}</td>
+              <tr *ngFor='let article of filteredArray' [routerLink]="['/article', article.id]" class="article-row">
+                <td>{{article.title}}</td>
                 <td>{{article.keyword}}</td>
-                <td>{{article.date}}</td>
-                <td>{{article.available}}</td>
+                <td>{{article.Date}}</td>
               </tr>
             </tbody>
         </table>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     selector:'pm-header',
@@ -14,13 +15,14 @@ export class HeaderComponent implements OnInit {
     username: String;
     constructor(
         private socialAuthService: SocialAuthService,
-        private router: Router
+        private router: Router,
+        private cookieService: CookieService
     ){ this.username = 'Guest'; }
 
     ngOnInit() {
         this.socialAuthService.authState.subscribe((user) => {
             this.socialUser = user;
-            this.username = this.socialUser.name;
+            this.username = this.cookieService.get('username');
         });
     }
 
@@ -37,6 +39,7 @@ export class HeaderComponent implements OnInit {
             }
         })();
         if (result) {
+            this.cookieService.deleteAll();
             this.socialAuthService.signOut();
             this.router.navigate(['']);
         }

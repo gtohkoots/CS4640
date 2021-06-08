@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { HttpParams, HttpClient } from "@angular/common/http";
-
+import { SessionStorage } from 'ngx-webstorage';
+import { Category } from '../category/category';
 
 @Component({
     selector:'pm-post',
@@ -12,12 +13,15 @@ import { HttpParams, HttpClient } from "@angular/common/http";
 
 export class PostArticleComponent implements OnInit {
     socialUser: SocialUser;
-    id: Number;
     articleForm: FormGroup;
+    categories: Category[];
+    @SessionStorage('userid')
+    userid: number;
+
     constructor(
         private socialAuthService: SocialAuthService,
         private http: HttpClient,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
     ){
         this.createForm();
     }
@@ -25,7 +29,7 @@ export class PostArticleComponent implements OnInit {
     createForm(){
         this.articleForm = this.formBuilder.group({
           cid: new FormControl(''),
-          uid: this.id,
+          uid: this.userid,
           title: new FormControl(''),  
           keyword: new FormControl(''),
           text: new FormControl(''),
@@ -38,12 +42,20 @@ export class PostArticleComponent implements OnInit {
         });
         let params = new HttpParams().append("email",this.socialUser.email);
         this.http.get('http://localhost/cs4640/get_user_id.php', {params: params}).subscribe( (response) => {
-            this.id = Number(response);
-            console.log(this.id + " is the user id");
+            this.userid = Number(response);
         }, 
         error => {
             console.log(error);
         }); 
+
+        this.http.get('http://localhost/cs4640/get_category.php').subscribe( response => {
+            if (response['message'] == 'Success') {
+                this.categories = response['data'];
+            }
+        }, error => {
+            console.log(error);
+        })
+
     }
 
     // This function enables user to submit the form only after one select a category
@@ -74,10 +86,11 @@ export class PostArticleComponent implements OnInit {
             alert("Text must be filled out");
             return false;
         }
-        this.articleForm.controls['uid'].setValue(this.id);
-        console.log("what");
+        this.articleForm.controls['uid'].setValue(this.userid);
         this.http.post('http://localhost/cs4640/post-article.php',this.articleForm.value).subscribe( data => {
-            console.log(data + 'rows affected');
+            console.log(data + ' rows affected');
+            alert("Thank you for your input!");
+            this.articleForm.reset();
         }, error => {
             console.log(error);
         })
