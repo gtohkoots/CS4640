@@ -1,15 +1,16 @@
 <div class="article-detail">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
-                <div class="intro">
-                    <h1 class="text-center">{{article.title}}</h1>
-                    <p class="text-center"><span style="font-style: italic;">keyword: </span> <span style="text-decoration: underline;">{{article.keyword}}</span><span class="date">{{article.Date}}</span></p>
+                <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                    <div class="intro">
+                        <h1 class="text-center">{{article.title}}</h1>
+                        <p class="text-center"><span style="font-style: italic;">keyword: </span> <span style="text-decoration: underline;">{{article.keyword}}</span><span class="date">{{article.Date}}</span></p>
+                    </div>
+                    <div class="text">
+                        <p style="word-wrap: break-word;">{{article.text}}</p>
+                    </div>
                 </div>
-                <div class="text">
-                    <p>{{article.text}}</p>
-                </div>
-            </div>
         </div>
+        <pm-comment></pm-comment>
     </div>
 </div>

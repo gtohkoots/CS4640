@@ -18,7 +18,6 @@ export class ArticleDetailComponent implements OnInit {
     ){ }
     ngOnInit() {
         let id = Number(this.route.snapshot.paramMap.get('id'));
-        console.log(id);
         let params = new HttpParams().append("id", id);
         this.http.get('http://localhost/cs4640/get_article_id.php', {params: params}).subscribe( response => {
             if(response['message'] == 'Success'){

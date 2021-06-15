@@ -16,6 +16,8 @@ import { PostArticleComponent } from './article/article-post.component';
 import { CategoryComponent } from './category/category.component';
 import { SubscribeComponent } from './subscription/subscription.component';
 import { ArticleDetailComponent } from './article/article-detail.component';
+import { CommunityComponent } from './community/community-page.component';
+import { CommentComponent } from './comment/comment.component';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 
@@ -29,7 +31,9 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     PostArticleComponent,
     CategoryComponent,
     SubscribeComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    CommunityComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

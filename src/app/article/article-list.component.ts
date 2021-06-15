@@ -13,7 +13,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 
 export class ArticleListComponent implements OnInit {
     socialUser: SocialUser;
-    pageTitle: string = "Article List";
+    pageTitle: string = "My Article";
     private _filterInput: string = '';
     filteredArray: Article[];
     id: number;

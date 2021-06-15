@@ -12,10 +12,6 @@
         text-align: center;
     }
 }
-
-h1 {
-    transition: 0.8s;
-}
 h1:hover {
     background-color: black;
     color: white;

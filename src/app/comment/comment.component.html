@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header" id="card-control" (click)="toggleCard()">
+        <h3>Community Chat</h3>
+    </div>
+    <div class="card-body" style="z-index: 0;" id="card-target">
+        <ul class="list-group">
+            <li class="list-group-item" style="margin-bottom:6px;" *ngFor="let comment of comments;">
+                <div class="d-flex media">
+                    <div class="media-body">
+                        <div class="d-flex media" style="overflow:visible;">
+                            <div style="overflow:visible;" class="media-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p><a>{{comment.authorname}}: </a> {{comment.content}} <br /><small class="text-muted">{{comment.Date}}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="btn btn-outline-primary" style="margin-left:601px;margin-top:9px;font-family: system-ui;" type="button" (click)="submitComment()">Add Comment</button>
+    </div>
+</div>

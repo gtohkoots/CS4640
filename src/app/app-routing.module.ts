@@ -6,6 +6,7 @@ import { PostArticleComponent } from './article/article-post.component';
 import { CategoryComponent } from './category/category.component';
 import { SubscribeComponent } from './subscription/subscription.component';
 import { ArticleDetailComponent } from './article/article-detail.component';
+import { CommunityComponent } from './community/community-page.component';
 
 const routes: Routes = [
   { path: '', component: SubscribeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'article/post', component: PostArticleComponent},
   { path: 'article/:id', component: ArticleDetailComponent},
   { path: 'category', component: CategoryComponent},
+  { path: 'community', component: CommunityComponent},
   { path: '**', redirectTo: '',  pathMatch: 'full'}
 ];
 

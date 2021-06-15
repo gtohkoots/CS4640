@@ -1,0 +1,17 @@
+<div class="container community-body">
+    <h2 class="community-title">Discover heated topics around you!</h2>
+    <div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
+        <div class="col-sm-6 col-lg-4 mb-4" *ngFor='let article of articles' >
+            <div class="card">
+                <picture type srcset><img class="card-img-top p-3" [src]='article.imagePath' alt style="border-radius: 24px; object-fit: cover" /></picture>
+                <div class="card-body">
+                    <h5 class="card-title">{{article.title}}<br /></h5>
+                    <p class="card-text text-muted">Author: {{article.authorname}}</p>
+                    <p class="card-text text-muted">Category: {{article.catename}}<br /></p>
+                    <p class="card-text text-muted">Keyword: {{article.keyword}}<br /></p>
+                    <a [routerLink]="['/article', article.id]">Content</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

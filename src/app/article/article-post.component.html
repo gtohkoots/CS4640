@@ -1,5 +1,5 @@
 <body style="margin: 50px">
-        <h1 (mouseover)="changeExpress()">Write an Article</h1>
+        <h1 (mouseover)="changeExpress()" [ngStyle]="{'transition': '0.8s'}">Write an Article</h1>
         <div class="col-sm-8 well">
             <form name = "writeForm" [formGroup]="articleForm" accept-charset="UTF-8"style="text-align: center" (ngSubmit)="validateForm()">
                 <div class="dropdown col-sm-4 article-item">
@@ -25,7 +25,7 @@
                     placeholder="Write" rows="20" (keyup)="onEnterKey()"></textarea>
                     <span id="wordCount">0</span> Characters
                     <br>
-                    <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="submitButton" [ngClass]="['btn', 'btn-primary']">Submit</button>
                 </div> 
             </form>
         </div>
