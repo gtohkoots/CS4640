@@ -32,9 +32,12 @@ export class CommentComponent implements OnInit{
         var input = prompt("Please enter your comment here!");
         this.http.post('http://localhost/cs4640/comment_submit.php',{content:input, uid: this.userid, aid: this.article_id})
         .subscribe( response => {
-            alert("Comment Submitted");
+            alert("Comment Submitted!");
+            //this.refresh();
         }, error => {
-            alert(error);
+            alert("Comment Submitted");
+            console.log(error);
+            //alert(error);
         })
     }
 

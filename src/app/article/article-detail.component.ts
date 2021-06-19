@@ -22,7 +22,6 @@ export class ArticleDetailComponent implements OnInit {
         this.http.get('http://localhost/cs4640/get_article_id.php', {params: params}).subscribe( response => {
             if(response['message'] == 'Success'){
                 this.article = response['data'];
-                console.log(this.article);
             }
         }, error => {
             console.log(error);

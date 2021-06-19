@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         this.socialAuthService.authState.subscribe((user) => {
             this.socialUser = user;
-            this.username = this.cookieService.get('username');
         });
+        this.username = this.cookieService.get('username');
     }
 
     // This function implements an anonymous function 

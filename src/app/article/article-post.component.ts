@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { HttpParams, HttpClient } from "@angular/common/http";
 import { SessionStorage } from 'ngx-webstorage';
@@ -15,6 +15,7 @@ export class PostArticleComponent implements OnInit {
     socialUser: SocialUser;
     articleForm: FormGroup;
     categories: Category[];
+    public selectedFile: any;
     @SessionStorage('userid')
     userid: number;
 
@@ -26,6 +27,11 @@ export class PostArticleComponent implements OnInit {
         this.createForm();
     }
 
+    onFileChanged(event: any): void{
+        this.selectedFile = event.target.files[0];
+        console.log(this.selectedFile);
+    }
+
     createForm(){
         this.articleForm = this.formBuilder.group({
           cid: new FormControl(''),
@@ -33,6 +39,7 @@ export class PostArticleComponent implements OnInit {
           title: new FormControl(''),  
           keyword: new FormControl(''),
           text: new FormControl(''),
+          //image: ['', Validators.required]
         });
       }
 
